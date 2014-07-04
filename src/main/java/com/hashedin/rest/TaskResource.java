@@ -57,7 +57,7 @@ public class TaskResource
         // Handles POST on /tasks. Creates a new task and adds it into an repository.
         taskService.save(task);
         response.setStatus(Response.Status.CREATED.getStatusCode());
-        return Response.created(new URI("/tasks/" + task.getId())).build();
+        return Response.created(new URI("/tasks/" + task.getTaskId())).build();
     }
     
     @PUT
