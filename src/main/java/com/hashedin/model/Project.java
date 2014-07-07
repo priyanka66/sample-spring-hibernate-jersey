@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -25,7 +26,7 @@ public class Project {
 	private String projectDescription;
 	private String status;
 	
-	@OneToMany(mappedBy="project")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="project")
 	private List<Task> tasks;
 	
 	public Project() {
@@ -40,6 +41,16 @@ public class Project {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
 
 	public Long getProjectId() {
 		return projectId;

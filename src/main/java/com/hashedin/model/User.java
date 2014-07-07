@@ -1,9 +1,9 @@
 package com.hashedin.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -23,12 +23,17 @@ public class User {
 	private String userName;
 	private String emailId;
 
-	@OneToMany(mappedBy="user")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="user")
 	private List<Task> tasks;
 	
-	public User() {
-        tasks = new ArrayList<Task>();
-    }
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
 	
 	public Long getUserId() {
 		return userId;

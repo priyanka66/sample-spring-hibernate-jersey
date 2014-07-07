@@ -57,7 +57,7 @@ public class ProjectResource {
 		// repository.
 		projectService.save(project);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/projects/" + project.getProjectId()))
+		return Response.created(new URI("/tasks/" + project.getProjectId()))
 				.build();
 	}
 

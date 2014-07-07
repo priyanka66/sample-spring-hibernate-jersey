@@ -57,4 +57,24 @@ public class TaskServiceImpl implements TaskService
         return taskRepository.delete(taskId);
     }
 
+
+	@Override
+	public List<Task> findByProjectId(long projectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<Task> findByUser(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<Task> findByStatus(String status) {
+		return taskRepository.findByStatus(status);
+	}
+
 }

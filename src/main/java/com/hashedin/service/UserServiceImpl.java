@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hashedin.model.Task;
 import com.hashedin.model.User;
 import com.hashedin.repository.UserRepository;
 
@@ -56,5 +57,11 @@ public class UserServiceImpl implements UserService
         // Deletes the user with the give userId and returns the same.
         return userRepository.delete(userId);
     }
+
+
+	@Override
+	public List<Task> findTasksByUserId(long userId) {
+		return userRepository.find(userId).getTasks();
+	}
 
 }

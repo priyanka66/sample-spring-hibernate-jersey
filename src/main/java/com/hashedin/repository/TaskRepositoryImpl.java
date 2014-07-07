@@ -52,4 +52,23 @@ public class TaskRepositoryImpl implements TaskRepository
         return taskToBeDeleted;
     }
 
+	@Override
+	public List<Task> findByProjectId(long projectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Task> findByUser(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Task> findByStatus(String status) {
+		 TypedQuery<Task> query = em.createNamedQuery("Task.findByStatus", Task.class);
+	        List<Task> results = query.getResultList();
+	        return results;
+	}
+
 }

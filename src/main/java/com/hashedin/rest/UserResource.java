@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hashedin.model.Task;
 import com.hashedin.model.User;
 import com.hashedin.service.UserService;
 
@@ -58,9 +59,9 @@ public class UserResource {
 		response.setStatus(Response.Status.CREATED.getStatusCode());
 		return Response.created(new URI("/users/" + user.getUserId())).build();
 	}
+	@Path("/{userId}")
 
 	@PUT
-	@Path("/{userId}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public User update(User user, @PathParam("userId") Long userId) {
@@ -76,4 +77,13 @@ public class UserResource {
 		// returns the same.
 		return userService.delete(userId);
 	}
+	
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Path("/{userId}/tasks")
+	public List<Task> getTasks(@PathParam("userId/tasks") Long userId) {
+
+		return userService.findTasksByUserId(userId);
+	}
+
 }

@@ -1,7 +1,5 @@
 package com.hashedin.model;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "tasks")
-@NamedQueries({ @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t") })
+@NamedQueries({ @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t") ,
+				@NamedQuery(name="Task.findByStatus", query = "SELECT t FROM Task t WHERE t.status = :status")})
+
 public class Task {
 
 	@Id
@@ -24,6 +24,8 @@ public class Task {
 	private String title;
 	private String createdDate;
 	private String endDate;
+	private String  status;
+	
 	
 	@ManyToOne
     private Project project;
@@ -82,6 +84,14 @@ public class Task {
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", project=" + project + "]";
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

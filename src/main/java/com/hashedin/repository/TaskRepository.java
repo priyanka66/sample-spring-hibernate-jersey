@@ -11,5 +11,8 @@ public interface TaskRepository {
     Task save(Task task);
     Task update(Task task, Long taskId);
     Task delete(Long taskId);
+    List<Task> findByProjectId(long projectId);
+	List<Task> findByUser(long userId);
+	List<Task> findByStatus(String status);
 
 }
