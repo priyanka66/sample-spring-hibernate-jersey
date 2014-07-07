@@ -39,15 +39,6 @@ public class TaskResource
         // Handles GET on /tasks. Lists all the tasks we have in our system.
         return taskService.findAll();
     }
-    @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Path("/{status}")
-    public Task get(@PathParam("status") String status)
-    {
-        
-    	return null;
-        //return taskService.findByStatus(status);
-    }
     
 
     @GET

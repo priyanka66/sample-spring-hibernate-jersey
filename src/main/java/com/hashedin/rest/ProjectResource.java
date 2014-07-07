@@ -38,6 +38,7 @@ public class ProjectResource {
 		return projectService.findAll();
 	}
 
+	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{projectId}")

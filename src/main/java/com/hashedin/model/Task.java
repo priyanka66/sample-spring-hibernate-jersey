@@ -3,6 +3,7 @@ package com.hashedin.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,10 +29,12 @@ public class Task {
 	
 	
 	@ManyToOne
-    private Project project;
+	@JoinColumn(name="userId" ,referencedColumnName="userId")
+    private User user;
 	
 	@ManyToOne
-	private User user;
+	@JoinColumn(name="projectId" ,referencedColumnName="projectId")
+	private Project project;
 	
 	public Project getProject() {
 		return project;

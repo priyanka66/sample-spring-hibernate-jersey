@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 @XmlRootElement
 @Entity
 @Table(name = "users")
@@ -22,8 +24,9 @@ public class User {
 	private Long userId;
 	private String userName;
 	private String emailId;
-
-	@OneToMany(fetch=FetchType.EAGER,mappedBy="user")
+	
+	@XmlInverseReference(mappedBy="user")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="user",targetEntity=Task.class)
 	private List<Task> tasks;
 	
 	public List<Task> getTasks() {

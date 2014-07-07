@@ -81,7 +81,7 @@ public class UserResource {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{userId}/tasks")
-	public List<Task> getTasks(@PathParam("userId/tasks") Long userId) {
+	public List<Task> getTasks(@PathParam("userId") Long userId) {
 
 		return userService.findTasksByUserId(userId);
 	}
